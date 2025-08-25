@@ -10,7 +10,7 @@ export function Authenticator() {
 
   useEffect(() => {
     if (localStorage.getItem("quiz_unlocked") === "true") {
-      navigate("/daily-quiz", { replace: true });
+      navigate("/daily-quiz-list", { replace: true });
     }
   }, [navigate]);
 
@@ -20,24 +20,31 @@ export function Authenticator() {
     setStatus(ok ? "ok" : "err");
     if (ok) {
       localStorage.setItem("quiz_unlocked", "true");
-      setTimeout(() => navigate("/daily-quiz"), 600); // tiny pause for feedback
+      setTimeout(() => navigate("/daily-quiz-list"), 700); // tiny pause for feedback
     }
   };
 
+  const resetGate = () => {
+    // delete just our key
+    localStorage.removeItem("quiz_unlocked");
+    setStatus(null);
+    setAnswer("");
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center  px-2">
+    <div className="min-h-screen flex items-center justify-center md:px-2">
       <div className="w-full max-w-sm">
-        <div className="rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-6 sm:p-8 shadow-sm flex flex-col items-center">
+        <div className="rounded-2xl backdrop-blur p-5 sm:p-8 flex flex-col items-center">
 
           {/* Drawing */}
           <img
             src={maxDrawing}
             alt="Max Drawing"
-            className="w-50 h-50 object-fit mb-4 rounded-xl shadow"
+            className="w-50 h-50 md:w-75 md:h-75 object-fit mb-4 rounded-xl shadow"
           />
 
           {/* Prompt */}
-          <h2 className="text-center text-lg sm:text-2xl font-semibold text-slate-800">
+          <h2 className="text-center text-xl sm:text-2xl font-semibold text-slate-800 dark:text-slate-50">
             Hm… What do you reckon the word is on the sweater? 🤔
           </h2>
 
@@ -50,15 +57,25 @@ export function Authenticator() {
               onChange={(e) => setAnswer(e.target.value)}
               className={`w-full rounded-xl px-4 py-3 shadow-inner bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-400 border ${
                 status === "err" ? "border-rose-300" : "border-slate-300"
-              } `}
+              } bg-slate-950`}
             />
 
             <button
               type="submit"
-              className="w-full rounded-xl bg-sky-600 text-slate-800 font-medium py-3 shadow hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-400 active:scale-[.98] transition"
+              className="w-full rounded-xl bg-sky-600 text-slate-800 dark:text-slate-50 font-medium py-3 shadow active:scale-[.98] transition"
             >
               Submit
             </button>
+
+            {/* Reset / delete localStorage key */}
+            {/*<button*/}
+            {/*  type="button"*/}
+            {/*  onClick={resetGate}*/}
+            {/*  className="mt-4 text-xs text-gray-500 underline underline-offset-2 hover:text-gray-700"*/}
+            {/*  title="Delete unlock state"*/}
+            {/*>*/}
+            {/*  Reset &amp; relock*/}
+            {/*</button>*/}
           </form>
 
           {/* Feedback */}
@@ -68,7 +85,7 @@ export function Authenticator() {
               aria-live="polite"
               className="mt-3 text-center text-sm text-rose-600"
             >
-              Close — but not quite. Try again!
+              Nuh uh ☺️
             </p>
           )}
 
@@ -77,15 +94,10 @@ export function Authenticator() {
               aria-live="polite"
               className="mt-3 text-center text-sm text-emerald-600 "
             >
-              Nailed it! 🎉
+              You nailed it! Gud boyo! 🎉 REDIRECTING...
             </p>
           )}
         </div>
-
-        {/* Optional hint */}
-        <p className="mt-3 text-center text-xs text-slate-500 ">
-          Hint: check the sweater 😉
-        </p>
       </div>
     </div>
   );
