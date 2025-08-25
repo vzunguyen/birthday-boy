@@ -25,9 +25,9 @@ export function Authenticator() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-2">
+    <div className="min-h-screen flex items-center justify-center  px-2">
       <div className="w-full max-w-sm">
-        <div className="rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-6 sm:p-8 shadow-sm dark:bg-slate-800/70 dark:border-slate-700 flex flex-col items-center">
+        <div className="rounded-2xl border border-slate-200 bg-white/80 backdrop-blur p-6 sm:p-8 shadow-sm flex flex-col items-center">
 
           {/* Drawing */}
           <img
@@ -37,7 +37,7 @@ export function Authenticator() {
           />
 
           {/* Prompt */}
-          <h2 className="text-center text-lg sm:text-2xl font-semibold text-slate-800 dark:text-slate-100">
+          <h2 className="text-center text-lg sm:text-2xl font-semibold text-slate-800">
             Hm… What do you reckon the word is on the sweater? 🤔
           </h2>
 
@@ -50,12 +50,12 @@ export function Authenticator() {
               onChange={(e) => setAnswer(e.target.value)}
               className={`w-full rounded-xl px-4 py-3 shadow-inner bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-sky-400 border ${
                 status === "err" ? "border-rose-300" : "border-slate-300"
-              } dark:bg-slate-900 dark:text-slate-100 dark:placeholder-slate-500`}
+              } `}
             />
 
             <button
               type="submit"
-              className="w-full rounded-xl bg-sky-600 text-white font-medium py-3 shadow hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-400 active:scale-[.98] transition dark:focus:ring-offset-slate-900"
+              className="w-full rounded-xl bg-sky-600 text-slate-800 font-medium py-3 shadow hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-400 active:scale-[.98] transition"
             >
               Submit
             </button>
@@ -66,7 +66,7 @@ export function Authenticator() {
             <p
               role="alert"
               aria-live="polite"
-              className="mt-3 text-center text-sm text-rose-600 dark:text-rose-400"
+              className="mt-3 text-center text-sm text-rose-600"
             >
               Close — but not quite. Try again!
             </p>
@@ -75,7 +75,7 @@ export function Authenticator() {
           {status === "ok" && (
             <p
               aria-live="polite"
-              className="mt-3 text-center text-sm text-emerald-600 dark:text-emerald-400"
+              className="mt-3 text-center text-sm text-emerald-600 "
             >
               Nailed it! 🎉
             </p>
@@ -83,7 +83,7 @@ export function Authenticator() {
         </div>
 
         {/* Optional hint */}
-        <p className="mt-3 text-center text-xs text-slate-500 dark:text-slate-400">
+        <p className="mt-3 text-center text-xs text-slate-500 ">
           Hint: check the sweater 😉
         </p>
       </div>
