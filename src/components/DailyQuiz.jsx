@@ -9,6 +9,7 @@ export function DailyQuiz({ clueNo, question, image, alt = "Quiz image" }) {
   const panelId = useId();
 
   return (
+    <div className="pb-3">
     <div className="border border-[#5E5E64] rounded-lg bg-white/10 transition-transform">
       {/* Header (click target) */}
       <button
@@ -45,6 +46,7 @@ export function DailyQuiz({ clueNo, question, image, alt = "Quiz image" }) {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
