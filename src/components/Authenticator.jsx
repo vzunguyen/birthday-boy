@@ -2,15 +2,40 @@ import {useEffect, useState} from "react";
 import maxDrawing from "../assets/max-drawing.png";
 import { useNavigate } from "react-router-dom";
 
+const KEY = "quiz_unlocked";
+const EXP_KEY = "quiz_unlocked_exp";
+const TTL_MS = 30 * 60 * 1000;
+
 export function Authenticator() {
   const [answer, setAnswer] = useState("");
   const [status, setStatus] = useState(null);
   const navigate = useNavigate();
   const secret = "continuation";
 
+  // Helper to clear unlock
+  const clearUnlock = () => {
+    localStorage.removeItem(KEY);
+    localStorage.removeItem(EXP_KEY);
+  };
+
   useEffect(() => {
-    if (localStorage.getItem("quiz_unlocked") === "true") {
+    const exp = Number(localStorage.getItem(EXP_KEY) || 0);
+    const unlocked = localStorage.getItem(KEY) === "true";
+
+    if (unlocked && exp > Date.now()) {
+      // Auto-clear when expiry hits (works while this tab is open)
+      const msLeft = exp - Date.now();
+      const t = setTimeout(() => {
+        clearUnlock();
+      }, msLeft);
+
+      // Already unlocked → go straight to list
       navigate("/daily-quiz-list", { replace: true });
+
+      return () => clearTimeout(t);
+    } else {
+      // Expired or not set → clean up
+      clearUnlock();
     }
   }, [navigate]);
 
@@ -18,15 +43,27 @@ export function Authenticator() {
     e.preventDefault();
     const ok = answer.trim().toLowerCase() === secret.toLowerCase();
     setStatus(ok ? "ok" : "err");
+
     if (ok) {
-      localStorage.setItem("quiz_unlocked", "true");
-      setTimeout(() => navigate("/daily-quiz-list"), 700); // tiny pause for feedback
+      const expiresAt = Date.now() + TTL_MS;
+      localStorage.setItem(KEY, "true");
+      localStorage.setItem(EXP_KEY, String(expiresAt));
+
+      // Also schedule auto-clear from now (in case this tab stays open)
+      const t = setTimeout(() => {
+        clearUnlock();
+      }, TTL_MS);
+
+      // Tiny pause for feedback, then go
+      setTimeout(() => navigate("/daily-quiz-list"), 700);
+
+      // Clean up the timer if component unmounts quickly
+      return () => clearTimeout(t);
     }
   };
 
   const resetGate = () => {
-    // delete just our key
-    localStorage.removeItem("quiz_unlocked");
+    clearUnlock();
     setStatus(null);
     setAnswer("");
   };
