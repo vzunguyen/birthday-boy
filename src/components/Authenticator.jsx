@@ -45,7 +45,7 @@ export function Authenticator() {
 
           {/* Prompt */}
           <h2 className="text-center text-xl sm:text-2xl font-semibold text-slate-800 dark:text-slate-50">
-            Hm… What do you reckon the word on the sweater is?
+            Hm… What do you reckon the word on the sweater is? 🤔
           </h2>
 
           {/* Form */}
