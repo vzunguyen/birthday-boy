@@ -41,7 +41,7 @@ export function DailyQuizListView() {
      {/*     <h1 className="text-xl sm:text-3xl font-semibold py-2 text-slate-800 dark:text-slate-50"> Please be patient ^^</h1>*/}
      {/*     <text className="text-slate-800 dark:text-slate-50">Did you know!? Patience is a virtue.</text>*/}
      {/*   </div>*/}
-     {/* </main>*/}g
+     {/* </main>*/}
       <main className="grid place-items-center px-4 py-2 text-center">
         <DailyQuiz clueNo="Clue 1" question="What is dis country? 👀" image={frImage} />
         {/*<DailyQuiz clueNo="Clue 2" question="What is dis country? 👀" image={frImage}/>*/}
