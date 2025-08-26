@@ -2,10 +2,8 @@ import maxLibraryPhoto from '../assets/max-library.png';
 
 export function Header() {
   return (
-      <header className="sticky top-0">
-        <div
-          className="flex space-x-1 place-content-center"
-        >
+      <header className="top-0 pb-3">
+        <div className="flex space-x-1 place-content-center">
           <img
             src={maxLibraryPhoto}
             alt="A photo of Max"

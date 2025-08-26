@@ -2,6 +2,8 @@ import {Header} from "../components/Header.jsx";
 import {Authenticator} from "../components/Authenticator.jsx";
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
+import {DailyQuiz} from "../components/DailyQuiz.jsx";
+import frImage from "../assets/question-photos/fr.svg";
 
 const KEY = "quiz_unlocked";
 const EXP_KEY = "quiz_unlocked_exp";
@@ -32,13 +34,16 @@ export function DailyQuizListView() {
   }, [navigate]);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen ">
      <Header/>
-      <main className="min-h-[calc(100vh-4rem)] grid place-items-center px-4 text-center">
-        <div>
-          <h1 className="text-xl sm:text-3xl font-semibold py-2 text-slate-800 dark:text-slate-50"> Please be patient ^^</h1>
-          <text className="text-slate-800 dark:text-slate-50">Did you know!? Patience is a virtue.</text>
-        </div>
+     {/* <main className="min-h-[calc(100vh-4rem)] grid place-items-center px-4 text-center">*/}
+     {/*   <div>*/}
+     {/*     <h1 className="text-xl sm:text-3xl font-semibold py-2 text-slate-800 dark:text-slate-50"> Please be patient ^^</h1>*/}
+     {/*     <text className="text-slate-800 dark:text-slate-50">Did you know!? Patience is a virtue.</text>*/}
+     {/*   </div>*/}
+     {/* </main>*/}
+      <main className="grid place-items-center px-4 text-center">
+        <DailyQuiz clueNo="Clue 1" question="What is dis country? 👀" image={frImage}/>
       </main>
     </div>
   );
