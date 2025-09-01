@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import {DailyQuiz} from "../components/DailyQuiz.jsx";
 import frImage from "../assets/question-photos/fr.svg";
+import abbotImage from "../assets/question-photos/abbotsuger.png";
 
 const KEY = "quiz_unlocked";
 const EXP_KEY = "quiz_unlocked_exp";
@@ -44,7 +45,7 @@ export function DailyQuizListView() {
      {/* </main>*/}
       <main className="grid place-items-center px-4 py-2 text-center">
         <DailyQuiz clueNo="Clue 1" question="What is dis country? 👀" image={frImage} />
-        {/*<DailyQuiz clueNo="Clue 2" question="What is dis country? 👀" image={frImage}/>*/}
+        <DailyQuiz clueNo="Clue 2" question="You’ll dine beneath soaring arches and carved stone walls (Hint: He is the the father to ...)" image={abbotImage}/>
       </main>
     </div>
   );
