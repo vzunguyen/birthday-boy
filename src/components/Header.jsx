@@ -11,7 +11,7 @@ export function Header() {
           />
           <div className="self-center pl-1">
             <p className="text-3l font-sans relative text-slate-800 dark:text-slate-50">Max Robert Hunt</p>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Zu's Favourite Person 👾</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Zu's Gay Bestie 💅</p>
           </div>
         </div>
       </header>
