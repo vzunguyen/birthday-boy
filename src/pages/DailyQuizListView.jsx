@@ -5,6 +5,7 @@ import {useEffect} from "react";
 import {DailyQuiz} from "../components/DailyQuiz.jsx";
 import frImage from "../assets/question-photos/fr.svg";
 import abbotImage from "../assets/question-photos/abbotsuger.png";
+import chefsHatImage from "../assets/question-photos/chef-hats.png";
 
 const KEY = "quiz_unlocked";
 const EXP_KEY = "quiz_unlocked_exp";
@@ -46,6 +47,7 @@ export function DailyQuizListView() {
       <main className="grid place-items-center px-4 py-2 text-center">
         <DailyQuiz clueNo="Clue 1" question="What is dis country? 👀" image={frImage} />
         <DailyQuiz clueNo="Clue 2" question="You’ll dine beneath soaring arches and carved stone walls (Hint: He is the the father to ...)" image={abbotImage}/>
+        <DailyQuiz clueNo="Clue 3" question="Do you have any idea what this might be? 👀" image={chefsHatImage}/>
       </main>
     </div>
   );
