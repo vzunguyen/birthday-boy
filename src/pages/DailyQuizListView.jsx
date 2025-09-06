@@ -6,6 +6,8 @@ import {DailyQuiz} from "../components/DailyQuiz.jsx";
 import frImage from "../assets/question-photos/fr.svg";
 import abbotImage from "../assets/question-photos/abbotsuger.png";
 import chefsHatImage from "../assets/question-photos/chef-hats.png";
+import queenImage from "../assets/question-photos/queen.png";
+import monopolyImage from "../assets/question-photos/monopoly.png";
 
 const KEY = "quiz_unlocked";
 const EXP_KEY = "quiz_unlocked_exp";
@@ -48,6 +50,8 @@ export function DailyQuizListView() {
         <DailyQuiz clueNo="Clue 1" question="What is dis country? 👀" image={frImage} />
         <DailyQuiz clueNo="Clue 2" question="You’ll dine beneath soaring arches and carved stone walls (Hint: He is the the father to ...)" image={abbotImage}/>
         <DailyQuiz clueNo="Clue 3" question="Do you have any idea what this might be? 👀" image={chefsHatImage}/>
+        <DailyQuiz clueNo="Clue 4" question="The ..." image={queenImage} />
+        <DailyQuiz clueNo="Clue 5" question="In Monopoly, many properties like Fleet andgit p Vine all end with what word?" image={monopolyImage}/>
       </main>
     </div>
   );
